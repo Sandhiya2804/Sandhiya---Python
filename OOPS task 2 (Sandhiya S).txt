@@ -1,0 +1,48 @@
+class Author:
+    def __init__(self, author_name, author_birthdate, author_nationality):
+        self.author_name = author_name
+        self.author_birthdate = author_birthdate
+        self.author_nationality = author_nationality
+
+class Publisher:
+    def __init__(self, publisher_name, publisher_location):
+        self.publisher_name = publisher_name
+        self.publisher_location = publisher_location
+
+class Book:
+    def __init__(self, title, isbn, genre, price, author, publisher):
+        self.title = title
+        self.isbn = isbn
+        self.genre = genre
+        self.price = price
+        self.author = author
+        self.publisher = publisher
+
+class EBook(Book):
+    def __init__(self, title, isbn, genre, price, author, publisher, file_format):
+        super().__init__(title, isbn, genre, price, author, publisher)
+        self.file_format = file_format
+
+# Create instances
+author1 = Author("Kalki Krishnamurthy", "1887-03-28", "India")
+publisher1 = Publisher("Vanathi Publications", "India")
+book1 = Book("Ponniyin Selvan", "9780141439518", "Historical", 100, author1, publisher1)
+
+author2 = Author("William Shakespeare", "1564-04-23", "British")
+publisher2 = Publisher("Harvill Secker", "London")
+ebook1 = EBook("1984", "9781784876412", "Fiction", 7.99, author2, publisher2, "PDF")
+
+# Display information
+def display_book_info(book):
+    print("Title:", book.title)
+    print("ISBN:", book.isbn)
+    print("Genre:", book.genre)
+    print("Price:", book.price)
+    print("Author:", book.author.author_name)  # Changed to access author_name attribute
+    print("Publisher:", book.publisher.publisher_name)  # Changed to access publisher_name attribute
+    if isinstance(book, EBook):
+        print("File Format:", book.file_format)
+    print()
+
+display_book_info(book1)
+display_book_info(ebook1)
