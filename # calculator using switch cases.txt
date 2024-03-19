@@ -1,0 +1,24 @@
+# calculator using switch cases
+  while True:
+    operator = input("Enter operator (+, -, *, / or q to quit): ")
+    
+    if operator == 'q':
+        break
+    
+    if operator not in ['+', '-', '*', '/']:
+        print("Invalid operator")
+        continue
+    
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    
+    result = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x / y if y != 0 else "Error: Division by zero"
+    }[operator](num1, num2)
+    
+    print("Result:", result)
+
+print("Calculator has been closed.")
