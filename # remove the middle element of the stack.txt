@@ -1,0 +1,29 @@
+# remove the middle element of the stack
+
+def remove_middle(stack):
+    if len(stack) % 2 == 0:
+        mid = len(stack) // 2
+    else:
+        mid = len(stack) // 2 + 1
+
+    temp_stack = []
+
+    for _ in range(mid):
+        temp_stack.append(stack.pop())
+
+    stack.pop()
+
+    while temp_stack:
+        stack.append(temp_stack.pop())
+
+# Get stack elements from the user
+stack = input("Enter stack elements separated by spaces: ").split()
+stack = [int(x) for x in stack]
+
+remove_middle(stack)
+print("Stack after removing middle element:", stack)
+
+
+output: 
+Enter stack elements separated by spaces: 1 2 3 4 5 6 7
+Stack after removing middle element: [1, 2, 4, 5, 6, 7]
